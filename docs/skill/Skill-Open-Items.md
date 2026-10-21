@@ -20,11 +20,11 @@ file for them. Mark an item `[x]` when it closes, and write the date and the rea
 
 ## Now
 
-- State: the skill is drafted, audited twice, and installed through a junction (21/10/2026). It is
-  prepared as plugin 0.1.0 for the de-admin marketplace; the repository `de-admin/project-init` does not
-  exist yet, and nothing is pushed. It has not been run from start to end on a real folder.
-- Next step: create and push `de-admin/project-init` and the `claude-tools` entry (after SW's approval);
-  run `/project-init` on a real study folder, then record what went wrong here.
+- State: the skill is drafted, audited twice, and installed through a junction (21/10/2026). Plugin 0.1.0
+  is pushed to the private repository `de-admin/project-init`. The marketplace entry waits in PR #1 of
+  `de-admin/claude-tools` (<https://github.com/de-admin/claude-tools/pull/1>). The skill has not been run
+  from start to end on a real folder.
+- Next step: merge PR #1; run `/project-init` on a real study folder, then record what went wrong here.
 
 ## Questions for the owner
 
@@ -33,9 +33,9 @@ file for them. Mark an item `[x]` when it closes, and write the date and the rea
 - [ ] Q2. Share the skill through the de-admin marketplace (`de-admin/claude-tools`)? SW asked on
       21/10/2026 to prepare it. Done locally: `.claude-plugin/plugin.json`, `skills/project-init/`, the
       checker copied into each project as `tools/check_okf.py`, `CHANGELOG.md`, and the marketplace entry
-      committed in `D:\projects\claude-tools`. Open: create the private repository
-      `de-admin/project-init`, push it, and push the `claude-tools` entry. Close this item when both are
-      pushed.
+      committed in `D:\projects\claude-tools`. Done 21/10/2026: private repository `de-admin/project-init`
+      created (`de-admin` is a user account, not an organization) and `main` pushed; the `claude-tools`
+      entry pushed on branch `add-project-init`, PR #1. Open: merge PR #1. Close this item then.
 
 ## Gaps found (21/10/2026)
 
