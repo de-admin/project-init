@@ -28,8 +28,11 @@ file for them. Mark an item `[x]` when it closes, and write the date and the rea
 
 - [ ] Q1. Is this setup record (`docs/Project-Setup.md`) correct? It was inferred, not grilled. Confirm it,
       and the agent can add your `verified` entry.
-- [ ] Q2. Should the skill be shared with the team later (a plugin, or the Digital Engineering
-      repository)? This decides F10 (release changelog) and a remote.
+- [ ] Q2. Should the skill be shared with the team through the de-admin marketplace
+      (`de-admin/claude-tools`, which lists each mod by its own repository)? Needed for that: a private
+      repository `de-admin/project-init`; `.claude-plugin/plugin.json`; `skill/` moved to
+      `skills/project-init/`; a checker path that does not assume `~/.claude/skills` (a plugin installs in
+      the plugin cache); an entry in the marketplace. This also decides F10 (release changelog).
 
 ## Gaps found (21/10/2026)
 
