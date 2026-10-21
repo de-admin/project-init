@@ -1,6 +1,6 @@
 # Line 1 – Skill
 
-Reference: `skill/`
+Reference: `skills/project-init/`
 
 ## Documents
 

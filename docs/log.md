@@ -7,6 +7,12 @@ the **owner** (who is accountable for it) and the **reason**. Actors use the OKF
 
 ## 2026-10-21
 
+- **Update** — prepared as a plugin for the de-admin marketplace: the skill moved from `skill/` to
+  `skills/project-init/`; source paths in `skill/Skill-Overview.md`, `skill/Skill-Open-Items.md`,
+  `index.md` and `skill/index.md` changed to match. Overview: the checker copy (`tools/check_okf.py`) and the
+  plugin install. Open items: "Now" and Q2 updated. `Project-Setup.md`: new review section (F10 on)
+  actor:claude-code/claude-opus-5-5 · owner:human:SW · reason: SW asked to prepare project-init for the
+  de-admin marketplace
 - **Update** — `skill/Skill-Open-Items.md` Q2 now names the de-admin marketplace (`de-admin/claude-tools`)
   and the changes that sharing through it needs
   actor:claude-code/claude-opus-5-5 · owner:human:SW · reason: SW asked if the skill must be added to the

@@ -1,6 +1,6 @@
 """Run check_okf.py on real bundles, an edge-case fixture and a bundle made from the templates.
 
-Usage: python tests/test_check_okf.py [skill_dir]   (default: ../skill next to this file)
+Usage: python tests/test_check_okf.py [skill_dir]   (default: ../skills/project-init next to this file)
 Read the output: the expected results are in docs/skill/Skill-Overview.md section 5.
 """
 import re
@@ -10,7 +10,7 @@ import tempfile
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-SK = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parent.parent / "skill"
+SK = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parent.parent / "skills" / "project-init"
 CHECK = SK / "scripts" / "check_okf.py"
 STUDIES = Path(r"D:\Users\ShaoWenChooi\YTL\Digital Engineering (SPYTL) - Repository\Studies")
 NO_YAML = "import sys,runpy; sys.modules['yaml']=None; s=sys.argv[1]; sys.argv=['x', sys.argv[2]]; runpy.run_path(s, run_name='__main__')"

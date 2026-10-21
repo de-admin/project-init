@@ -1,0 +1,6 @@
+{
+  "name": "project-init",
+  "version": "0.1.0",
+  "description": "Initializes, adopts or reviews a project folder with OKF v0.2 context files (README.md, CLAUDE.md, docs/ bundle). Grills the user for the project type and the features that fit, and checks the bundle with a script.",
+  "author": { "name": "Shao Wen (YTL Data Team)" }
+}

@@ -37,6 +37,7 @@ Each feature has: what it is, the signals that make it fit, the cost, and where 
 | One folder per line | `docs/<line>/index.md`, `<Line>-Overview.md`, `<Line>-Open-Items.md` |
 | Current state, short form | The "Now" section of each open items file |
 | Setup record | `docs/Project-Setup.md` – the answers of the grilling and the features chosen (templates/Project-Setup.md) |
+| Checker | `tools/check_okf.py` – a copy of the skill's checker |
 
 ### Continuity – resume work across sessions
 
@@ -172,7 +173,7 @@ summary email.
 | F16. `reference/` | The user supplies source material | Read-only |
 | F17. `output/` | The project generates files | `output/<yyyy-mm-dd>/<name>_r<N>.<ext>` |
 | F18. `_archive/` | Retired versions must be kept | Do not edit |
-| F19. `tools/` | Extract or generate scripts exist or are planned | Document each script in the overview |
+| F19. `tools/` | Extract or generate scripts exist or are planned | Document each script in the overview. (`tools/` always exists for the checker copy; F19 means the project's own scripts) |
 | F20. Git | Code, or a need to undo changes | `git init`, `.gitignore`; commit rules from the global preferences |
 | F21. Project skills | A task repeats in this project and needs its own procedure | `.claude/skills/<name>/SKILL.md`. Mirror to `docs/skills/` only if git must track the skills and `.claude/` is ignored |
 

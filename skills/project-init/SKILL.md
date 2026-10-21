@@ -62,8 +62,13 @@ Then select the mode:
 |---|---|---|
 | `new` | The folder is empty or holds only reference material | Grill, then create the file set |
 | `adopt` | The folder has content but no OKF bundle | Grill, then create the file set around the content. Do not move or rename existing files |
-| `extend` | `docs/index.md` with `okf_version` exists, and the user wants to add a line or a document type | Run the checker first, then add. No full grilling |
+| `extend` | `docs/index.md` with `okf_version` exists, and the user wants to add a line or a document type | Refresh the checker copy, run it, then add. No full grilling |
 | `review` | The user asks to review the setup, or a trigger in `docs/Project-Setup.md` has happened | Read `docs/Project-Setup.md`, grill only on the changed facts, then add or retire features |
+
+**Refresh the checker copy** (modes `extend` and `review`): compare the `VERSION` line of
+`tools/check_okf.py` with `scripts/check_okf.py` in this skill. If the project copy is older or missing,
+copy the skill's version over it, and add a `log.md` entry. The project has no `tools/check_okf.py` if it
+was set up before version 0.1.0 of this skill; copy it in, and change the checker command in `CLAUDE.md`.
 
 If the folder has an older docs layout (`docs/context/`, `docs/INDEX.md`, `CURRENT.md`, `docs/sessions/`),
 do not convert it in silence. Map each old file to a feature in `references/features.md` Part B, propose
@@ -117,7 +122,7 @@ Placeholders that need a definition:
 | `{{RELATIVE_PATH_TO_REFERENCE}}`, `{{RELATIVE_PATH_TO_FILE}}` | The same kind of path, relative to the **concept file** (`../../Version 5/Version 5/`). Use relative paths, not `/`-rooted paths, for files outside `docs/` |
 | `{{TEAM}}` | From the folder path (`Digital Engineering (SPYTL)`, `Data Team (SPYTL)`), or ask |
 | `{{MODEL_ID}}` | The model ID of this session, for example `claude-opus-5-5` |
-| `{{CHECKER_COMMAND}}` | `python "$env:USERPROFILE\.claude\skills\project-init\scripts\check_okf.py" docs` when the skill is installed for the user; otherwise the real path of `scripts/check_okf.py` |
+| `{{CHECKER_COMMAND}}` | `python tools\check_okf.py docs` – the project's own copy of the checker (see the core file set) |
 | `{{N}}`, `{{TOTAL}}` | The number of the line, and the number of lines |
 
 For more than one line, repeat the line section in `docs/index.md` and the row in the README table.
@@ -128,6 +133,8 @@ For more than one line, repeat the line section in `docs/index.md` and the row i
 <project>/
 ├── README.md                     templates/README.md
 ├── CLAUDE.md                     templates/CLAUDE.md
+├── tools/
+│   └── check_okf.py              copy of scripts/check_okf.py (do not edit the copy)
 └── docs/                         OKF v0.2 bundle
     ├── index.md                  templates/docs-index.md     (root: okf_version only)
     ├── log.md                    templates/docs-log.md
@@ -138,6 +145,9 @@ For more than one line, repeat the line section in `docs/index.md` and the row i
         └── <Line>-Open-Items.md  templates/Open-Items.md     (type: open-items)
 ```
 
+- Copy `scripts/check_okf.py` from this skill's folder to `tools/check_okf.py` in the project. The project
+  then runs the checker with no reference to where the skill is installed (a user skill folder, a junction
+  or the plugin cache), and other tools can run it too. Do not edit the copy; to update it, copy it again.
 - A project with **one line** still gets a line folder. A second line is then easy to add.
 - `<line-slug>` is lowercase with hyphens (`worksheet-kpi`). `<Line>` in file names is Title-Case with
   hyphens (`Worksheet-KPI`). The prefix keeps file names unique when files are shared or exported.
@@ -208,10 +218,10 @@ concept with `type: Attested Computation` (see `references/okf-rules.md`).
 Run the checker on the bundle and fix every FAIL:
 
 ```bash
-python "<skill-dir>/scripts/check_okf.py" docs
+python tools/check_okf.py docs
 ```
 
-`<skill-dir>` is the folder of this SKILL.md. Fix WARN lines when the fix is clear. Report the others.
+Fix WARN lines when the fix is clear. Report the others.
 The checker uses PyYAML when it is installed. Without it, the frontmatter checks are approximate.
 
 ## Step 6 – Log and report

@@ -62,4 +62,17 @@ All other features: off, no signal.
 
 - [ ] Another person or agent starts to change the skill → F14, F15
 - [ ] A design choice is questioned or reversed → F7
-- [ ] The skill is shared with the team (a plugin or a shared repository) → F10 release changelog
+- [x] The skill is shared with the team (a plugin or a shared repository) → F10 release changelog –
+      happened 21/10/2026, see the next section
+
+## 2026-10-21 – review: prepared as a plugin for the de-admin marketplace
+
+SW asked to prepare the skill for the de-admin marketplace (`de-admin/claude-tools`). The trigger for F10
+happened.
+
+| Feature | Decision | Reason |
+|---|---|---|
+| F10 Release changelog | on | Team members install versions of the plugin; `CHANGELOG.md` at the root |
+| F19 `tools/` | on, as `skills/project-init/scripts/` and `tests/` | The skill moved from `skill/` to the plugin layout `skills/project-init/` |
+
+The other decisions of the first section are unchanged.

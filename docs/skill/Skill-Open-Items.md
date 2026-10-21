@@ -6,7 +6,7 @@ status: draft
 tags: [line-1, skill, tracker]
 sources:
   - id: skill
-    resource: ../../skill/SKILL.md
+    resource: ../../skills/project-init/SKILL.md
     title: The skill, as installed on 21/10/2026
 generated:
   by: claude-code/claude-opus-5-5
@@ -20,19 +20,22 @@ file for them. Mark an item `[x]` when it closes, and write the date and the rea
 
 ## Now
 
-- State: the skill is drafted, audited twice, and installed through a junction (21/10/2026). It has not
-  been run from start to end on a real folder.
-- Next step: run `/project-init` on a new or existing study folder, then record what went wrong here.
+- State: the skill is drafted, audited twice, and installed through a junction (21/10/2026). It is
+  prepared as plugin 0.1.0 for the de-admin marketplace; the repository `de-admin/project-init` does not
+  exist yet, and nothing is pushed. It has not been run from start to end on a real folder.
+- Next step: create and push `de-admin/project-init` and the `claude-tools` entry (after SW's approval);
+  run `/project-init` on a real study folder, then record what went wrong here.
 
 ## Questions for the owner
 
 - [ ] Q1. Is this setup record (`docs/Project-Setup.md`) correct? It was inferred, not grilled. Confirm it,
       and the agent can add your `verified` entry.
-- [ ] Q2. Should the skill be shared with the team through the de-admin marketplace
-      (`de-admin/claude-tools`, which lists each mod by its own repository)? Needed for that: a private
-      repository `de-admin/project-init`; `.claude-plugin/plugin.json`; `skill/` moved to
-      `skills/project-init/`; a checker path that does not assume `~/.claude/skills` (a plugin installs in
-      the plugin cache); an entry in the marketplace. This also decides F10 (release changelog).
+- [ ] Q2. Share the skill through the de-admin marketplace (`de-admin/claude-tools`)? SW asked on
+      21/10/2026 to prepare it. Done locally: `.claude-plugin/plugin.json`, `skills/project-init/`, the
+      checker copied into each project as `tools/check_okf.py`, `CHANGELOG.md`, and the marketplace entry
+      committed in `D:\projects\claude-tools`. Open: create the private repository
+      `de-admin/project-init`, push it, and push the `claude-tools` entry. Close this item when both are
+      pushed.
 
 ## Gaps found (21/10/2026)
 

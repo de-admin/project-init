@@ -8,7 +8,7 @@ This bundle has one line: the skill.
 
 ## Line 1 – Skill
 
-Reference: `skill/`
+Reference: `skills/project-init/`
 
 * [skill/](skill/) - The project-init skill: what it does, the evidence it is based on, its tests and its open items
 

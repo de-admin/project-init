@@ -36,6 +36,8 @@ Each line is one separate subject, with its own reference material and its own d
 ├── README.md        this file
 ├── CLAUDE.md        procedure for Claude Code sessions
 ├── {{REFERENCE_PATH}}   line 1 reference material (read-only)
+├── tools/
+│   └── check_okf.py checks docs/ against the rules below: python tools\check_okf.py docs
 └── docs/            documentation bundle (OKF v0.2)
     ├── index.md     root index: the lines
     ├── log.md       change log

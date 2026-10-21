@@ -15,19 +15,37 @@ Started 21/10/2026 by SW (YTL Data Team, SPYTL).
 
 | Line | Subject | Reference | Documentation |
 |---|---|---|---|
-| 1 | **Skill** – the skill, its references, templates and checker | [`skill/`](skill/) | [`docs/skill/`](docs/skill/) |
+| 1 | **Skill** – the skill, its references, templates and checker | [`skills/project-init/`](skills/project-init/) | [`docs/skill/`](docs/skill/) |
 
 ## Install
 
-The installed skill is a directory junction to `skill/`, so an edit here changes the installed skill at
-once. Run in Windows PowerShell (one time per machine):
+This repository is a Claude Code plugin. It is listed in the de-admin marketplace
+([de-admin/claude-tools](https://github.com/de-admin/claude-tools)). The repositories are private: git on
+your machine must have access to `de-admin` on GitHub.
 
-```powershell
-cmd /c mklink /J "$env:USERPROFILE\.claude\skills\project-init" "D:\projects\project-init\skill"
+```bash
+claude plugin marketplace add de-admin/claude-tools
 ```
 
+```bash
+claude plugin install project-init@claude-tools --scope user
+```
+
+To update: `claude plugin marketplace update claude-tools`, then `claude plugin update project-init@claude-tools`.
+
 To use it, open a project folder in Claude Code and say "initialize this project", or type
-`/project-init`.
+`/project-init`. The skill copies its checker into each project as `tools/check_okf.py`.
+
+### Develop the skill
+
+Do not install the plugin on the machine where you develop it. Link the skill folder instead, so an edit
+here changes the installed skill at once. Run in Windows PowerShell (one time per machine):
+
+```powershell
+cmd /c mklink /J "$env:USERPROFILE\.claude\skills\project-init" "D:\projects\project-init\skills\project-init"
+```
+
+With both the plugin and the junction, the skill loads twice.
 
 ## Test
 
@@ -46,11 +64,14 @@ the templates. It prints results; compare them with the expected results in
 project-init/
 ├── README.md            this file
 ├── CLAUDE.md            procedure for Claude Code sessions in this repository
-├── skill/               the skill (installed through a junction)
+├── CHANGELOG.md         changes for each release of the plugin
+├── .claude-plugin/
+│   └── plugin.json      plugin name, version, description
+├── skills/project-init/ the skill
 │   ├── SKILL.md         the procedure: inspect, grill, show the fit, write, check, log
 │   ├── references/      features.md (types, features, questions), okf-rules.md (OKF + house rules)
 │   ├── templates/       file templates with {{placeholders}}
-│   └── scripts/         check_okf.py – the bundle checker
+│   └── scripts/         check_okf.py – the bundle checker (copied into each project as tools/)
 ├── tests/               test_check_okf.py
 └── docs/                documentation bundle (OKF v0.2)
     ├── index.md

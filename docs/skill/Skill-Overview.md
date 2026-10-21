@@ -4,19 +4,19 @@ title: project-init skill – Overview
 description: What the project-init skill does, its parts, the evidence from earlier projects that shaped it, the main design choices, and the tests with their expected results
 status: draft
 tags: [line-1, skill, claude-code-skill]
-resource: ../../skill/
+resource: ../../skills/project-init/
 sources:
   - id: skill
-    resource: ../../skill/SKILL.md
+    resource: ../../skills/project-init/SKILL.md
     title: The skill procedure (Steps 1–6, modes new, adopt, extend, review)
   - id: features
-    resource: ../../skill/references/features.md
+    resource: ../../skills/project-init/references/features.md
     title: Project types, features F1–F24, questions Q1–Q12, challenge rules, triggers
   - id: rules
-    resource: ../../skill/references/okf-rules.md
+    resource: ../../skills/project-init/references/okf-rules.md
     title: OKF v0.2 summary and house adaptations
   - id: checker
-    resource: ../../skill/scripts/check_okf.py
+    resource: ../../skills/project-init/scripts/check_okf.py
     title: Bundle checker
   - id: tests
     resource: ../../tests/test_check_okf.py
@@ -37,7 +37,7 @@ generated:
 
 # project-init skill – Overview
 
-**Line 1 of 1.** This line documents the skill in [`skill/`](../../skill/).
+**Line 1 of 1.** This line documents the skill in [`skills/project-init/`](../../skills/project-init/).
 
 ## 1. Purpose
 
@@ -54,7 +54,10 @@ script can check it[^spec].
 | `references/features.md` | 5 project types, 24 features (F1–F24), 12 questions (Q1–Q12), challenge rules, triggers for a review[^features] |
 | `references/okf-rules.md` | The OKF v0.2 rules, the house adaptations, the `type` vocabulary and the body shape of each type[^rules] |
 | `templates/` | 11 file templates with `{{placeholders}}` |
-| `scripts/check_okf.py` | Checks a bundle: FAIL for a break of OKF conformance, WARN for a house rule. Standard library; uses PyYAML when it is installed[^checker] |
+| `scripts/check_okf.py` | Checks a bundle: FAIL for a break of OKF conformance, WARN for a house rule. Standard library; uses PyYAML when it is installed. The skill copies it into each project as `tools/check_okf.py`, and refreshes an older copy by its `VERSION`[^checker] |
+
+All skill files are in `skills/project-init/`. The repository is a Claude Code plugin
+(`.claude-plugin/plugin.json`, version 0.1.0), listed in the de-admin marketplace `de-admin/claude-tools`.
 
 The files that the skill always writes: `README.md` (description and doc rules), `CLAUDE.md` (agent
 procedure only), `docs/index.md`, `docs/log.md`, `docs/Project-Setup.md`, and for each line an `index.md`,
@@ -97,7 +100,8 @@ four projects.
 | No `verified: []`; no key means unverified | OKF trust tiers read the key; an empty list says nothing more (open item D1) |
 | `type: overview`, not `app-overview` | One type for every kind of subject; the kind goes in `tags` (open item D2) |
 | `/`-rooted paths mean the bundle root | As the OKF spec says; files outside `docs/` use relative paths |
-| Installed through a junction | One source; no copy to keep in step |
+| Installed through a junction on the developer's machine; as a plugin for the team | One source while it is developed; versions for the team |
+| Checker copied into each project (`tools/check_okf.py`) | A plugin installs in a cache folder whose path changes with each version; a copy in the project always works, also for other tools |
 
 ## 5. Tests and expected results
 
@@ -113,10 +117,10 @@ Run `python tests\test_check_okf.py`[^tests]. Expected on 21/10/2026:
 
 The Voon numbers change when that project changes its docs. A change there is not a failure of the skill.
 
-[^skill]: `skill/SKILL.md`
-[^features]: `skill/references/features.md`
-[^rules]: `skill/references/okf-rules.md`
-[^checker]: `skill/scripts/check_okf.py`
+[^skill]: `skills/project-init/SKILL.md`
+[^features]: `skills/project-init/references/features.md`
+[^rules]: `skills/project-init/references/okf-rules.md`
+[^checker]: `skills/project-init/scripts/check_okf.py`
 [^tests]: `tests/test_check_okf.py`
 [^spec]: OKF spec v0.2
 [^worksheet]: Worksheet Improvements `docs/`

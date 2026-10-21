@@ -6,7 +6,11 @@ Usage:
 FAIL = breaks OKF v0.2 bundle conformance (or a hard house rule). Exit code 1 if any FAIL.
 WARN = a house rule or a likely mistake (missing recommended key, broken link, unlisted document).
 Standard library only. Uses PyYAML for a full parse when it is installed.
+
+This file is copied into each project as tools/check_okf.py by the project-init skill. Do not edit a
+copy; change the skill's scripts/check_okf.py, raise VERSION, and copy it again.
 """
+VERSION = "0.1.0"
 import argparse
 import fnmatch
 import re
@@ -314,7 +318,7 @@ def main():
     fails = sum(1 for r in results if r[0] == "FAIL")
     warns = len(results) - fails
     parser = "PyYAML" if yaml else "built-in parser"
-    print(f"{'PASS' if not fails else 'FAIL'}: {len(concepts)} concepts, {fails} FAIL, {warns} WARN ({parser})")
+    print(f"{'PASS' if not fails else 'FAIL'}: {len(concepts)} concepts, {fails} FAIL, {warns} WARN ({parser}, check_okf {VERSION})")
     return 1 if fails else 0
 
 
